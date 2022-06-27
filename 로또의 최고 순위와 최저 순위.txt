@@ -1,0 +1,35 @@
+def ratings(x):
+    if x > 5:
+        return 1
+    elif x > 4:
+        return 2
+    elif x > 3:
+        return 3
+    elif x > 2:
+        return 4
+    elif x > 1:
+        return 5
+    else:
+        return 6
+
+def solution(lottos, win_nums):
+    answer = []
+    arr = []
+    cnt = 0
+    
+    for i in lottos:
+        if i in win_nums:
+            cnt += 1
+    arr.append(cnt)
+    
+    for i in lottos: 
+        if i == 0:
+            cnt += 1
+            arr.append(cnt)
+    
+    low, high = arr[0], arr[-1]
+    
+    answer.append(ratings(high))
+    answer.append(ratings(low))
+    
+    return answer
