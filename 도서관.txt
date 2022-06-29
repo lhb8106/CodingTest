@@ -1,0 +1,35 @@
+import sys
+
+n, m = map(int, sys.stdin.readline().split())
+walk = list(map(int, sys.stdin.readline().split()))
+plus = []
+minus = []
+max_walk = 0 
+
+for i in walk:
+    if i > 0:
+        plus.append(i)
+    else:
+        minus.append(i)
+
+    if abs(i) > abs(max_walk):
+        max_walk = i
+
+plus.sort(reverse= True)
+minus.sort()
+
+
+walking = 0
+
+for j in range(0, len(plus), m):
+    if plus[j] != max_walk:
+        walking += plus[j]
+
+for k in range(0, len(minus), m):
+    if minus[k] != max_walk:
+        walking += abs(minus[k])
+        
+walking *= 2
+walking += abs(max_walk)
+
+print(walking)
