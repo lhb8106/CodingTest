@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+class Solution {
+    public int solution(String t, String p) {
+        int p_length = p.length();
+        //String type -> Long type
+        long num = Long.parseLong(p);
+        int answer = 0;
+        
+        for (int i = 0 ; i< t.length()- p_length +1; i++) {
+            long cut_num = Long.parseLong(t.substring(i, i+p_length));
+            if(cut_num <= num) {
+                answer += 1;
+            }
+        }
+        return answer;
+    }
+}
